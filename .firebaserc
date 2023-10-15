@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "immoplus-e2dae": {
+      "hosting": {
+        "app": [
+          "immoplus-e2dae"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "immoplus-e2dae"
+  }
+}
