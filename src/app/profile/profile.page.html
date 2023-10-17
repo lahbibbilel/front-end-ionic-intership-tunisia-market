@@ -1,0 +1,44 @@
+<ion-content>
+  <div class="header">
+    <ion-title class="title" size="large">Welcome</ion-title>
+    <p class="subtitle">Mes annonces</p>
+  </div>
+
+  <div class="top-right-button">
+    <ion-button [routerLink]="['/add-immob']" size="small">Add immob</ion-button>
+  </div>
+
+  <div class="ion-padding">
+    <ion-card *ngFor="let immob of allImmobs">
+      <ion-item-sliding>
+        <ion-item>
+          <div class="blur-image-container">
+            <img [src]="immob.image" class="blur-image" />
+            <div class="image-overlay">
+              <div class="overlay-text">
+                <p class="overlay-text-item">{{ immob.price }}</p>
+                <p class="overlay-text-item">{{ immob.localisation }}</p>
+              </div>
+            </div>
+          </div>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option [routerLink]="['/update-immob']">Update</ion-item-option>
+          <ion-item-option  color="danger" (click)="presentAlert(immob.id)">Delete</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-card>
+  </div>
+
+  <ion-fab vertical="top" horizontal="start">
+    <ion-fab-button (click)="signOut()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="top" horizontal="end" style="margin-bottom: 30px">
+    <ion-fab-button [routerLink]="['/login']">
+      <ion-icon name="chevron-forward"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

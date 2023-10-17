@@ -30,6 +30,22 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
+  {
+    path: 'add-immob',
+    loadChildren: () => import('./add-immob/add-immob.module').then( m => m.AddImmobPageModule)
+  },
+  {
+    path: 'details-immob',
+    loadChildren: () => import('./details-immob/details-immob.module').then( m => m.DetailsImmobPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'update-immob',
+    loadChildren: () => import('./update-immob/update-immob.module').then( m => m.UpdateImmobPageModule)
+  },
 
 
 
