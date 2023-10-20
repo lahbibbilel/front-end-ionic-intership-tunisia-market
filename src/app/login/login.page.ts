@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService} from '../authentication.service';
+import { AuthenticationService } from '../authentication.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
@@ -12,12 +12,14 @@ import { ToastController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
   ionicForm!: FormGroup;
-
-  // email:any
-  // password:any
-  // contact:any
-
-  constructor(private toastController: ToastController, private alertController: AlertController, private loadingController: LoadingController, private authService: AuthenticationService, private router: Router, public formBuilder: FormBuilder) { }
+  constructor(
+    private toastController: ToastController,
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private authService: AuthenticationService,
+    private router: Router, // Inject the Router
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
@@ -28,43 +30,47 @@ export class LoginPage implements OnInit {
           Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
         ],
       ],
-      password: ['', [
-        // Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'),
-        Validators.required,
-      ]
-      ],
+      password: ['', [Validators.required]],
     });
   }
 
   async login() {
     const loading = await this.loadingController.create();
     await loading.present();
-    // console.log(this.email + this.password);
+
     if (this.ionicForm.valid) {
+      this.authService
+        .loginUser(this.ionicForm.value.email, this.ionicForm.value.password)
+        .then((userCredential) => {
+          const user = userCredential.user; // Obtenir l'objet utilisateur
+          loading.dismiss();
 
-      //  await  loading.dismiss();
-      const user = await this.authService.loginUser(this.ionicForm.value.email, this.ionicForm.value.password).catch((err) => {
-        this.presentToast(err)
-        console.log(err);
-        loading.dismiss();
-      })
+          if (user && user.email) {
+            // Stockez l'e-mail dans le local storage
+            localStorage.setItem('userEmail', user.email);
 
-      if (user) {
-        loading.dismiss();
-        this.router.navigate(['/home'])
-      }
+            this.router.navigate(['/home']);
+            console.log('Email: ', user.email);
+            console.log('User ID: ', user.uid);
+          } else {
+            console.log('Utilisateur non trouvé.');
+          }
+        })
+        .catch((err) => {
+          this.presentToast(err.message);
+          console.log(err);
+          loading.dismiss();
+        });
     } else {
       return console.log('Please provide all the required values!');
     }
-
   }
+
   get errorControl() {
     return this.ionicForm.controls;
   }
 
-  async presentToast(message: undefined) {
-    console.log(message);
-
+  async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
       duration: 1500,

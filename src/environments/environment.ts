@@ -4,15 +4,15 @@
 
 export const environment = {
   production: false,
-    firebase: {
-      apiKey: "AIzaSyAcaMZLhmIism25J58Ha9E08avTVI4cgYQ",
-      authDomain: "immoplus-e2dae.firebaseapp.com",
-      projectId: "immoplus-e2dae",
-      storageBucket: "immoplus-e2dae.appspot.com",
-      messagingSenderId: "440625971893",
-      appId: "1:440625971893:web:f5b4dc30ede006dc45f4fc",
-      measurementId: "G-11KE43XBYT"
-  }
+  firebase: {
+    apiKey: 'AIzaSyApmrTiHsTlyGArRx6F_-NIG1yulLBmjU4',
+    authDomain: 'ionic-project-ef09e.firebaseapp.com',
+    projectId: 'ionic-project-ef09e',
+    storageBucket: 'ionic-project-ef09e.appspot.com',
+    messagingSenderId: '416347523190',
+    appId: '1:416347523190:web:d3084e476a45d4d1363757',
+    measurementId: 'G-X8LNTCSDQN',
+  },
 };
 
 /*

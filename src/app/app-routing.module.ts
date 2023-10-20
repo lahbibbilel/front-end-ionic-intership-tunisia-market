@@ -45,7 +45,19 @@ const routes: Routes = [
   {
     path: 'update-immob',
     loadChildren: () => import('./update-immob/update-immob.module').then( m => m.UpdateImmobPageModule)
+  },  {
+    path: 'add-anonce',
+    loadChildren: () => import('./crud-with-node/add-anonce/add-anonce.module').then( m => m.AddAnoncePageModule)
   },
+  {
+    path: 'update-anonce',
+    loadChildren: () => import('./crud-with-node/update-anonce/update-anonce.module').then( m => m.UpdateAnoncePageModule)
+  },
+  {
+    path: 'delete-anonce',
+    loadChildren: () => import('./crud-with-node/delete-anonce/delete-anonce.module').then( m => m.DeleteAnoncePageModule)
+  },
+
 
 
 

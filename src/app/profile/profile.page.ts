@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from '../authentication.service'; 
+import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
 import { DataServiceService } from '../data-service.service';
 import { AlertController } from '@ionic/angular';
@@ -14,12 +14,12 @@ export class ProfilePage {
   immobs!: Observable<any[]>;
   allImmobs: any[] = [];
   idDocument: any; // Define the idDocument property
-  checkedValue:any
+  checkedValue: any;
   constructor(
     private dataService: DataServiceService,
     private authService: AuthenticationService,
     private router: Router,
-    private alertController: AlertController,
+    private alertController: AlertController
   ) {}
 
   getImmobs() {
@@ -74,6 +74,4 @@ export class ProfilePage {
 
     await alert.present();
   }
-
- 
 }

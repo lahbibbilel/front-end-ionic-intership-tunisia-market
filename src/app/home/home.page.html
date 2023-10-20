@@ -1,47 +1,48 @@
 <ion-content>
-    <div class="header">
-      <ion-title class="title" size="large">Welcome</ion-title>
-      <p class="subtitle">Les Biens Phares</p>
+  <div class="header">
+    <ion-row class="btn">
+      <ion-fab-button [routerLink]="['/add-anonce']">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-row>
+    <ion-row>
+      <ion-fab vertical="top" horizontal="end">
+        <ion-fab-button [routerLink]="['/login']">
+          <ion-icon name="log-out-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-row>
+    <div *ngIf="userEmail" class="user-email">
+      Bienvenue,<br />
+      {{ userEmail }}
     </div>
-    <!-- Button to navigate to the page for getting immobs by email at the top right -->
-    <div class="top-right-button">
-      <ion-button [routerLink]="['/add-immob']" size="small">Add immob</ion-button>
-      <ion-button [routerLink]="['/profile']" size="small">Profile</ion-button>
-
-    </div>
-    <div class="ion-padding">
-      <ion-card *ngFor="let immob of allImmobs">
-        <ion-card-content>
-          <div class="ion-text-center">
-            <div class="blur-image-container">
-              <img [src]="immob.image" class="blur-image" />
-              <div class="image-overlay">
-                <div class="overlay-text">
-                  <p class="overlay-text-item">{{ immob.price }}</p>
-                  <p class="overlay-text-item">{{ immob.localisation }}</p>
-                </div>
+  </div>
+  <div class="ion-padding">
+    <ion-card *ngFor="let annonce of anonce">
+      <ion-card-content>
+        <div class="ion-text-center">
+          <div class="blur-image-container">
+            <div class="image-overlay">
+              <div class="overlay-text">
+                <p class="overlay-text-item">{{ annonce.name }}</p>
+                <p class="overlay-text-item">{{ annonce.description }}</p>
               </div>
             </div>
-            <div class="button-container">
-              <ion-button fill="outline" [routerLink]="['/details']" color="secondary" class="details-button">Détails</ion-button>
-              
-            </div>
+
+            <img [src]="annonce.image" width="300" height="100" />
           </div>
-          <!-- ... Autres éléments de carte ... -->
-        </ion-card-content>
-      </ion-card>
-    </div>
-  
-    <!-- Sign out button as a floating action button -->
-    <ion-fab vertical="top" horizontal="start">
-      <ion-fab-button (click)="signOut()">
-        <ion-icon name="log-out-outline"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-    
-    <ion-fab vertical="top" horizontal="end" style="margin-bottom:30px">
-      <ion-fab-button [routerLink]="['/login']">
-        <ion-icon name="chevron-forward"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-  </ion-content>
+          <div class="button-container">
+            <ion-button (click)="updateAnnonce(annonce._id)"
+              ><ion-icon name="create"></ion-icon>
+            </ion-button>
+            <ion-button (click)="deleteAnnonce(annonce._id)"
+              ><ion-icon name="trash"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Boutons "Create", "Update" et "Delete" sur la même ligne que "Logout" -->
+</ion-content>

@@ -13,7 +13,7 @@ export class AddImmobPage {
     image: '',
     localisation: '',
     nb_pieces: '',
-    price: ''
+    price: '',
   };
   allImmobs: any[] = [];
   showAddButton = true;
@@ -32,19 +32,8 @@ export class AddImmobPage {
       localisation: this.ImmobData.localisation,
       nb_pieces: this.ImmobData.nb_pieces,
       price: this.ImmobData.price,
-      userId: localStorage.getItem('userId')
+      userId: localStorage.getItem('userId'),
     };
-
-    this.dataService.addImmob(newImmob).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.getImmobs();
-        this.toggleBtn();
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
   }
 
   getImmobs() {
@@ -65,6 +54,5 @@ export class AddImmobPage {
 
   ngOnInit() {
     this.getImmobs();
-   
   }
 }
