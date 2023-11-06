@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ToastrService } from 'ngx-toastr';
 import { ConsummerService } from 'src/app/service-nodeJs/consummer.service';
@@ -13,6 +14,7 @@ export class AddAnoncePage implements OnInit {
   groupeAnonces!: FormGroup;
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private consumer: ConsummerService,
     private toastr: ToastrService,
@@ -39,7 +41,7 @@ export class AddAnoncePage implements OnInit {
         {
           text: 'Enregistrer',
           handler: () => {
-            this.addAnonce();
+            this.router.navigate(['/home']);
           },
         },
       ],
@@ -54,8 +56,9 @@ export class AddAnoncePage implements OnInit {
       const newAnonce = this.groupeAnonces.value;
       this.consumer.createAnonce(newAnonce).subscribe(
         (response) => {
+          // this.router.navigate(['/home']);
           //this.toastr.success('Annonce ajoutée avec succès', 'Success');
-          alert('Annonce add with success');
+          // alert('Annonce add with success');
         },
         (error) => {
           this.toastr.error(

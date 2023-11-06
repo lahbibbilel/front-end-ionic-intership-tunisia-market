@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ConsummerService } from 'src/app/service-nodeJs/consummer.service';
 
@@ -14,6 +14,7 @@ export class UpdateAnoncePage implements OnInit {
   anonceData: any;
   newForm!: FormGroup;
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private consummer: ConsummerService,
     private formbuilder: FormBuilder,
@@ -55,7 +56,8 @@ export class UpdateAnoncePage implements OnInit {
         {
           text: 'Enregistrer',
           handler: () => {
-            this.updateAnonce();
+            // this.updateAnonce();
+            this.router.navigate(['/home']);
           },
         },
       ],

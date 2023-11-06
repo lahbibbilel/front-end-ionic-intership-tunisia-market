@@ -8,6 +8,17 @@
   color: #333;
 }
 
+/* Pour cibler l'image du logo dans le menu */
+/* Pour cibler l'image du logo dans le menu */
+.logo {
+  max-width: 5%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  float: left; /* Pour aligner l'image à gauche */
+  margin-right: 10px; /* Pour ajouter un espace entre l'image et les autres éléments du menu */
+}
+
 .subtitle {
   font-size: 18px;
   color: #666;
@@ -55,6 +66,13 @@
   border: none;
 }
 
+.header {
+  height: 180px;
+  background-color: #03a9f4;
+  width: 100%;
+  padding-top: 1px;
+}
+
 .details-button {
   margin-top: 4px;
 }
@@ -73,4 +91,82 @@
   width: 50px;
   height: auto;
   display: inline-block;
+}
+
+.header {
+  height: 180px;
+  background-color: #03a9f4;
+  width: 100%;
+  padding-top: 1px;
+}
+
+.header h2 {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px 0px 10px;
+}
+
+.followings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.followings p {
+  color: white;
+  margin: 8px 0px 0px 0px;
+}
+
+.img-box {
+  border-radius: 50%;
+  overflow: hidden;
+  height: 130px;
+  width: 130px;
+}
+.border-white {
+  border: white solid 4px;
+  border-radius: 50%;
+  width: fit-content;
+}
+.border-blue {
+  border: 7px solid #006bbf;
+  border-radius: 50%;
+  width: fit-content;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+  margin-top: -76px;
+}
+.tweet-img {
+  border-radius: 10px;
+  width: 95%;
+  margin-left: 2.5%;
+}
+
+.tweet {
+  margin-top: -10px !important;
+}
+
+.test {
+  max-width: 100%; /* Reduce the maximum width of the cards */
+  max-height: 250px; /* Reduce the maximum height of the cards */
+}
+
+.tweet ion-label {
+  line-height: 1 !important;
+  font-size: 15px;
+  margin: 6px 0px 6px 0px !important;
+  min-height: 34px;
+}
+
+/* Pour augmenter la taille de l'image */
+ion-avatar img {
+  width: 100px; /* Largeur de l'image à 100% pour remplir l'espace de l'avatar */
+  height: 100%; /* Hauteur automatique pour conserver les proportions d'origine de l'image */
 }

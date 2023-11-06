@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title size="large">Add New Bien</ion-title>
+    <ion-title size="large">Add New Product</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,11 +15,11 @@
       <ion-input formControlName="image" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Description:</ion-label>
+      <ion-label>Prix:</ion-label>
       <ion-input formControlName="description" type="text"></ion-input>
     </ion-item>
     <div class="ion-text-center">
-      <ion-button type="submit" size="large"
+      <ion-button type="submit" (click)="showConfirmationAlert()" size="large"
         ><ion-icon name="add-circle"></ion-icon
       ></ion-button>
     </div>
